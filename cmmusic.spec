@@ -1,7 +1,7 @@
 Summary:	Console Mplayer Music
 Name:	  	cmmusic
 Version:	1.5
-Release:	%mkrel 3
+Release:	4
 License:	GPLv2+
 Group:		Sound
 Source0: 	http://downloads.sourceforge.net/cmmusic/%name-%version-src.tar.gz
@@ -32,6 +32,10 @@ tar xfz %name-%version.tar.gz
 tar xfz %name-plugin-%version.tar.gz
 tar xfz %name-plugin-gtk-%version.tar.gz
 
+find . -name "*.cpp" -exec chmod a-x {} \;
+find . -name "*.c" -exec chmod a-x {} \;
+find . -name "*.h" -exec chmod a-x {} \;
+
 cd %name-plugin-%version
 %patch0 -p0
 cd -
@@ -53,7 +57,6 @@ pushd %name-plugin-gtk-%version
 popd
 
 %install
-rm -rf $RPM_BUILD_ROOT
 pushd %name-%version
 %makeinstall_std
 popd
@@ -66,12 +69,7 @@ pushd %name-plugin-gtk-%version
 %makeinstall_std
 popd
 
-%{find_lang} %{name}
-
-%clean
-rm -rf $RPM_BUILD_ROOT
-
-%files -f %{name}.lang
+%files
 %defattr(-, root, root)
 %{_bindir}/*
 %{_datadir}/%name
@@ -80,3 +78,19 @@ rm -rf $RPM_BUILD_ROOT
 %files gtk
 %defattr(-, root, root)
 %{_datadir}/%name/plugins/proj1
+
+
+%changelog
+* Thu Dec 09 2010 Oden Eriksson <oeriksson@mandriva.com> 1.5-3mdv2011.0
++ Revision: 617073
+- the mass rebuild of 2010.0 packages
+
+* Thu Sep 10 2009 Thierry Vignaud <tv@mandriva.org> 1.5-2mdv2010.0
++ Revision: 437058
+- rebuild
+
+* Mon Mar 23 2009 Funda Wang <fwang@mandriva.org> 1.5-1mdv2009.1
++ Revision: 360605
+- import cmmusic
+
+
