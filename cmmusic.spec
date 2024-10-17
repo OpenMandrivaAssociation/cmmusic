@@ -6,7 +6,7 @@ License:	GPLv2+
 Group:		Sound
 Source0: 	http://downloads.sourceforge.net/cmmusic/%name-%version-src.tar.gz
 Patch0:		cmmusic-1.5-gcc43.patch
-URL:		http://cmmusic.sourceforge.net/
+URL:		https://cmmusic.sourceforge.net/
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires:	ncursesw-devel
 BuildRequires:	ncurses-devel
